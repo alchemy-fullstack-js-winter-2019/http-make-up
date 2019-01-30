@@ -10,7 +10,7 @@ The colors schema should include a name, hex and rgb:
 {
   name: 'red',
   hex: '#FF0000',
-  rgb: 'rgb(255, 0, 0)
+  rgb: 'rgb(255, 0, 0)'
   __v: 0,
   _id: SOME_ID
 }
