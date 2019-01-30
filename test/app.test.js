@@ -35,4 +35,15 @@ describe('colors', () => {
         });
       });
   });
+
+  it('can get a list of colors', () => {
+    return Promise.all(['red', 'white', 'blue'].map(createColor))
+      .then(() => {
+        return request(app)
+          .get('/colors');
+      })
+      .then(res => {
+        expect(res.body).toHaveLength(3);
+      });
+  });
 });
