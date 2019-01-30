@@ -1,0 +1,40 @@
+{
+  "name": "http-make-up",
+  "version": "1.0.0",
+  "description": "Create a RESTful express app for colors.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "start": "node server.js",
+    "start:watch": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deetolman/http-make-up.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deetolman/http-make-up/issues"
+  },
+  "homepage": "https://github.com/deetolman/http-make-up#readme",
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "jest": "^24.0.0",
+    "nodemon": "^1.18.9",
+    "supertest": "^3.4.2"
+  },
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "mongoose": "^5.4.8",
+    "start": "^5.1.0"
+  }
+}
