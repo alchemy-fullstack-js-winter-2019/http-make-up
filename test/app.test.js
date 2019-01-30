@@ -46,41 +46,17 @@ describe('colors app', () => {
       });
   });
 
-  // it('can create a ron swanson tweet', () => {
-  //   return createUser('test user')
-  //     .then(createdUser => {
-  //       return request(app)
-  //         .post('/tweets/?random=true')
-  //         .send({
-  //           //create with reference to a user, user's id who we created above
-  //           //handle is reference to user
-  //           handle: createdUser._id,
-  //           text: 'some text',
-  //           tag: 'code'
-  //         })
-  //         .then(res => {
-  //           expect(res.body).toEqual({
-  //             handle: expect.any(String),
-  //             text: 'There are only three ways to motivate people: money, fear, and hunger.',
-  //             tag: 'code',
-  //             _id: expect.any(String),
-  //             __v: 0
-  //           });
-  //         });
-  //     });
-  // });
-
-  // it('can list all the tweets in the database', () => {
-  //   const handles = ['roxy1', 'roxy2', 'roxy3', 'roxy4'];
-  //   return Promise.all(handles.map(createTweet))
-  //     .then(() => {
-  //       return request(app)
-  //         .get('/tweets');
-  //     })
-  //     .then(({ body }) => {
-  //       expect(body).toHaveLength(5);
-  //     });
-  // });
+  it('can list all the colors in the database', () => {
+    const names = ['blue', 'orange', 'red', 'grey'];
+    return Promise.all(names.map(createColor))
+      .then(() => {
+        return request(app)
+          .get('/colors');
+      })
+      .then(({ body }) => {
+        expect(body).toHaveLength(4);
+      });
+  });
 
   // it('gets a tweet by id', () => {
   //   return createTweet('kristin1')
