@@ -75,35 +75,17 @@ describe('colors app', () => {
       });
   });
 
-  // it('updates a tweet with :id and returns the update', () => {
-  //   return createTweet('kristin1')
-  //     .then(createdTweet => {
-  //       createdTweet.text = 'new text';
-  //       return request(app)
-  //         .patch(`/tweets/${createdTweet._id}`)
-  //         .send(createdTweet);
-  //     })
-  //     .then(res => {
-  //       expect(res.body).toEqual({
-  //         handle: expect.any(Object),
-  //         text: 'new text',
-  //         tag: 'code',
-  //         _id: expect.any(String)
-  //       });
-  //     });
-  // });
-
-  // it('deletes a tweet with :id and returns the delete count', () => {
-  //   return createTweet('baller for lyfe')
-  //     .then((createdTweet) => {
-  //       const id = createdTweet._id;
-  //       return request(app)
-  //         .delete(`/tweets/${id}`)
-  //         .then(res => {
-  //           expect(res.body).toEqual({ 'deleted': 1 });
-  //         });
-  //     });
-  // });
+  it('deletes a color with :id and returns the delete count', () => {
+    return createColor('green')
+      .then((createdColor) => {
+        const id = createdColor._id;
+        return request(app)
+          .delete(`/colors/${id}`)
+          .then(res => {
+            expect(res.body).toEqual({ 'deleted': 1 });
+          });
+      });
+  });
 });
 
 afterAll((done) => {
