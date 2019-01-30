@@ -58,21 +58,22 @@ describe('colors app', () => {
       });
   });
 
-  // it('gets a tweet by id', () => {
-  //   return createTweet('kristin1')
-  //     .then(createdTweet => {
-  //       return request(app) 
-  //         .get(`/tweets/${createdTweet._id}`)
-  //         .then(res => {
-  //           expect(res.body).toEqual({
-  //             handle: expect.any(Object),
-  //             text: 'some text',
-  //             tag: 'code',
-  //             _id: expect.any(String)
-  //           });
-  //         });
-  //     });
-  // });
+  it('gets a color by id', () => {
+    return createColor('grey')
+      .then(createdColor => {
+        return request(app) 
+          .get(`/colors/${createdColor._id}`)
+          .then(res => {
+            expect(res.body).toEqual({
+              name: 'grey',
+              hex: 'some hex',
+              rgb: 'some rgb',
+              _id: expect.any(String),
+              __v: 0
+            });
+          });
+      });
+  });
 
   // it('updates a tweet with :id and returns the update', () => {
   //   return createTweet('kristin1')
