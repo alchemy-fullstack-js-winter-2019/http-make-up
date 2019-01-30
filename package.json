@@ -1,0 +1,32 @@
+{
+  "name": "http-make-up",
+  "version": "1.0.0",
+  "description": "Create a RESTful express app for colors.",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/connorfrendt/http-make-up.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/connorfrendt/http-make-up/issues"
+  },
+  "homepage": "https://github.com/connorfrendt/http-make-up#readme",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "eslint": "^5.12.1",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.8",
+    "supertest": "^3.4.2"
+  }
+}
