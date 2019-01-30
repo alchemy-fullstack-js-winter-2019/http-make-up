@@ -16,15 +16,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JeiWolfei/http-make-up.git"
+    "url": "git+https://github.com/redWolfei/http-make-up.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JeiWolfei/http-make-up/issues"
+    "url": "https://github.com/redWolfei/http-make-up/issues"
   },
-  "homepage": "https://github.com/JeiWolfei/http-make-up#readme",
+  "homepage": "https://github.com/redWolfei/http-make-up#readme",
   "dependencies": {
     "express": "^4.16.4",
     "morgan": "^1.9.1",
