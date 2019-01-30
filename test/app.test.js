@@ -86,7 +86,4 @@ describe('Color restful API', () => {
       });
   });
 
-  
-
-
 });
