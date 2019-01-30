@@ -1,0 +1,37 @@
+{
+  "name": "http-make-up",
+  "version": "1.0.0",
+  "description": "Create a RESTful express app for colors.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "jest": "jest --verbose --runInBand",
+    "test": "npm run jest",
+    "test:watch": "npm run jest -- --watch",
+    "start": "node server.js",
+    "start:watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Katedam/http-make-up.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Katedam/http-make-up/issues"
+  },
+  "homepage": "https://github.com/Katedam/http-make-up#readme",
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "jest": "^24.0.0",
+    "supertest": "^3.4.2"
+  },
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.8",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.9"
+  }
+}
