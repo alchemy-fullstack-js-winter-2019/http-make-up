@@ -1,0 +1,38 @@
+{
+  "name": "http-make-up",
+  "version": "1.0.0",
+  "description": "Create a RESTful express app for colors.",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts":{
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint .",
+    "pretest": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sophiegraham/http-make-up.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sophiegraham/http-make-up/issues"
+  },
+  "homepage": "https://github.com/sophiegraham/http-make-up#readme",
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "jest": "^24.0.0",
+    "mkdirp": "^0.5.1",
+    "nodemon": "^1.18.9",
+    "rimraf": "^2.6.3",
+    "supertest": "^3.4.2"
+  },
+  "dependencies": {
+    "shortid": "^2.2.14",
+    "superagent": "^4.1.0"
+  }
+}
