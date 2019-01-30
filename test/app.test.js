@@ -67,5 +67,14 @@ describe('colors', () => {
       });
   });
 
-  it('');
+  it('deletes a color by id', () => {
+    return createColor('blue')
+      .then(color => {
+        return request(app)
+          .delete(`/colors/${color._id}`);
+      })
+      .then(res => {
+        expect(res.body).toEqual({ deleted: 1 });
+      });
+  });
 });
