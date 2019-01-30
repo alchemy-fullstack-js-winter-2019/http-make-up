@@ -55,5 +55,36 @@ describe('color', () => {
           });
       });
   });
-  it()
+  it('can get a color by id', () => {
+    return createColor('grassy green')
+      .then(createdColor => {
+        return request(app)
+          .get(`/colors/${createdColor._id}`)
+          .then(res => {
+            expect(res.body).toEqual({
+              name: 'grassy green',
+              hex:'#FF0000',
+              rgb: 'rgb(255, 0, 0)',
+              __v: 0,
+              _id: expect.any(String)
+            });
+          });
+      });
+  });
+  it('can delete a color by id', () => {
+    return createColor('bionic blue')
+      .then(createdColor => {
+        return request(app)
+          .delete(`/colors/${createdColor._id}`);
+      })
+      .then(res => {
+        expect(res.body).toEqual({
+          name: 'bionic blue',
+          hex:'#FF0000',
+          rgb: 'rgb(255, 0, 0)',
+          __v: 0,
+          _id: expect.any(String)
+        });
+      });
+  });
 });
