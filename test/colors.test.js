@@ -70,6 +70,17 @@ describe('color route tests', () => {
       });
   });
 
+  it('delete a color by id', () => {
+    return newColor({ name: 'blue', hex: '#73BBD0', rgb: 'rgb(115, 187, 208)' })
+      .then(color => {
+        return request(app)
+          .delete(`/colors/${color._id}`);
+      })
+      .then(res => {
+        expect(res.body).toEqual({ deleted: 1 });
+      });
+  });
+
   afterAll(done => {
     mongoose.connection.close();
     done();
