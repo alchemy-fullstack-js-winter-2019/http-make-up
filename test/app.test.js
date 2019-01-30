@@ -3,13 +3,28 @@ const app = require('../lib/app');
 const rimraf = require('rimraf');
 const mkdirp = require('mkdirp');
 
-const createTweet = (hex, name = 'red red') => {
+const createcolor = (name, hex, rgb, _id) => {
   return request(app)
     .post('/colors')
-    .send({ name, hex })
-    .then(res => res.body);
-};
-
+    .send({ 
+      name: 'red',
+      hex: '#FF0000',
+      rgb: 'rgb(255, 0, 0)'
+      // eslint-disable-next-line
+      __v: 0,
+      _id: SOME_ID
+     })
+    .then(res => {
+      expect(res.body).toEqual({
+        name: 'red',
+        hex: '#FF0000',
+        rgb: 'rgb(255, 0, 0)',
+        _id: expect.any(String),
+        __v: 0
+      });
+    });
+  });
+});
 describe('colors', () => {
   beforeEach(done => {
     rimraf('./data/colors/*', err => {
@@ -22,65 +37,57 @@ describe('colors', () => {
     });
   });
   
-  it('creates a new tweet', () => {
+  it('creates a new color', () => {
     return request(app)
       .post('/colors')
-      .send({ name: 'red', hex: '#FF0000' })
+      .send({ name: 'red', hex: '#FF0000', rgb:'rgb(255, 0, 0)', _id:  })
       .then(res => {
         expect(res.body).toEqual({
           name: 'red',
           hex: '#FF0000',
-          _id: expect.any(String)
+          rgb: 'rgb(255, 0, 0)',
+          _id: expect.any(String),
+          __v: 0
         });
       });
   });
 
-  it('gets list of colors', () => {
-    const colorsToCreate = ['redfish', 'twofish', 'bluefish'];
-    return Promise.all(colorsToCreate.map(createTweet))
-      .then(() => {
-        return request(app)
-          .get('/colors');
-      })
-      .then(({ body }) => {
-        expect(body).toHaveLength(3);
-      });
-  });
-  it('gets a tweet by id', () => {
-    return createTweet('rowboat')
-      .then(createdTweet=> {
-        const _id = createdTweet._id;
+  it('gets a color by id', () => {
+    return createcolor('rowboat')
+      .then(createdcolor=> {
+        const _id = createdcolor._id;
         return request(app)
           .get(`/colors/${_id}`)
           .then(res => {
             expect(res.body).toEqual({
-              name: 'red red',
-              hex: 'rowboat',
-              _id
+              name: 'red',
+              rgb: 'rgb(255, 0, 0)',
+              _id: expect.any(String),
+              __v: 0
             });
           });
       });
   });
-  it('updates a tweet by :id', () => {
-    let newTweet = {
-      name: 'hi',
-      hex: 'test'
+  it('updates a color by :id', () => {
+    let newcolor = {
+      name: 'red',
+      hex: ''
     };
-    return createTweet('skoolio')
-      .then(createdTweet => {
-        const _id = createdTweet._id;
+    return createcolor('red')
+      .then(createdcolor => {
+        const _id = createdcolor._id;
         return request(app)
           .put(`/colors/${_id}`)
-          .send(newTweet);
+          .send(newcolor);
       })
       .then(res => {
         expect(res.body.name).toEqual('hi');
       });
   });
-  it('can delete a tweet', () => {
-    return createTweet('gotobed')
-      .then(createdTweet => {
-        const _id = createdTweet._id;
+  it('can delete a color', () => {
+    return createcolor('gotobed')
+      .then(createdcolor => {
+        const _id = createdcolor._id;
         return request(app)
           .delete(`/colors/${_id}`)
           .then(res => {
@@ -88,7 +95,7 @@ describe('colors', () => {
           });
       });
   });
-  it('error when no tweet by id', () => {
+  it('error when no color by id', () => {
     return request(app)
       .get('/colors/badId')
       .then(res => {
