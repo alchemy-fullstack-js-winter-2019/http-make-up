@@ -23,9 +23,9 @@ describe('color route tests', () => {
       })
       .then(res => {
         expect(res.body).toEqual({
-          _id: expect.any(mongoose.Types.ObjectId),
-          name: 'salmon', 
-          hex: '#FD866D', 
+          _id: expect.any(String),
+          name: 'salmon',
+          hex: '#FD866D',
           rgb: 'rgb(253, 134, 109)',
           __v: 0
         });
@@ -33,9 +33,8 @@ describe('color route tests', () => {
   });
 
   afterAll(done => {
-    return mongoose.connection.close(() => {
-      done();
-    });
+    mongoose.connection.close();
+    done();
   });
 
 });
