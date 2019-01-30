@@ -20,7 +20,7 @@ describe('color route tests', () => {
 
   it('create a new color', () => {
     return request(app)
-      .post('/')
+      .post('/colors')
       .send({ 
         name: 'salmon', 
         hex: '#FD866D', 
@@ -42,9 +42,30 @@ describe('color route tests', () => {
     return Promise.all(colorList.map(newColor))
       .then(() => {
         return request(app)
-          .get('/')
+          .get('/colors')
           .then(res => {
             expect(res.body).toHaveLength(2);
+          });
+      });
+  });
+
+  it('get a color by id', () => {
+    return newColor({ 
+      name: 'sage', 
+      hex: '#6D825B', 
+      rgb: 'rgb(109, 130, 91)' 
+    })
+      .then(createdColor => {
+        return request(app)
+          .get(`/colors/${createdColor._id}`)
+          .then(res => {
+            expect(res.body).toEqual({ 
+              _id: expect.any(String),
+              name: 'sage', 
+              hex: '#6D825B', 
+              rgb: 'rgb(109, 130, 91)',
+              __v: 0 
+            });
           });
       });
   });
