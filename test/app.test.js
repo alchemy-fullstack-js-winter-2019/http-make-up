@@ -74,4 +74,15 @@ describe('Colors app', () => {
           });
       });
   });
+
+  it('can find a color by id and delete', () => {
+    return createColor('black')
+      .then(createdColor => {
+        return request(app)
+          .delete(`/colors/${createdColor._id}`);
+      })
+      .then(res => {
+        expect(res.body).toEqual({ deleted: 1 });
+      });
+  });
 });
