@@ -4,6 +4,7 @@ const request = require('supertest');
 const app = require('../lib/app');
 const mongoose = require('mongoose');
 
+
 describe('Colors app', () => {
 
   const createColor = (name) => {
@@ -60,20 +61,17 @@ describe('Colors app', () => {
   it('can get a color by id', () => {
     return createColor('blue')
       .then(createdColor => {
-        return Promise.all([
-          Promise.resolve(createdColor._id), 
-          request(app)
-            .get(`/tweets/${createdColor._id}`)
-        ]);
-      })
-      .then(([_id, res]) => {
-        expect(res.body).toEqual({
-          name: expect.any(String),
-          hex: '#0000FF',
-          rgb: 'rgb(0,0,255)',
-          _id,
-          __v:0
-        });
+        return request(app)
+          .get(`/colors/${createdColor._id}`)
+          .then(res => {
+            expect(res.body).toEqual({
+              name: 'blue',
+              hex: 'hex',
+              rgb: 'rgb',
+              _id: expect.any(String),
+              __v: 0
+            });
+          });
       });
   });
 });
