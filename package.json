@@ -1,0 +1,45 @@
+{
+  "name": "http-make-up",
+  "version": "1.0.0",
+  "description": "Create a RESTful express app for colors.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch --runInBand",
+    "start": "nodemon server.js",
+    "lint": "eslint .",
+    "pretest": "npm run lint"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ipoblete/http-make-up.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ipoblete/http-make-up/issues"
+  },
+  "homepage": "https://github.com/ipoblete/http-make-up#readme",
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "jest": "^24.0.0",
+    "nodemon": "^1.18.9",
+    "supertest": "^3.4.2"
+  },
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "mkdirp": "^0.5.1",
+    "mongoose": "^5.4.8",
+    "rimraf": "^2.6.3",
+    "superagent": "^4.1.0"
+  }
+}
